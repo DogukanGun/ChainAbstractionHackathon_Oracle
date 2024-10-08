@@ -1,0 +1,1 @@
+This project's oracle part is generated from SEDA oracle starter pack
