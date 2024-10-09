@@ -20,13 +20,15 @@ async def get_news(
     all_articles = newsapi.get_everything(q=topic,
                                           language='en',
                                           sort_by='relevancy',
+                                          page_size=3,
                                           page=2)
+    contents = [article["content"] for article in all_articles["articles"]]
     ai_response = ollama.chat(
-        model="llama3.1",
+        model="llama3-gradient:1048k",
         messages=[
             {
                 'role': 'system',
-                'content': f"These are the news for the topic {topic}. News: \n {all_articles}"
+                'content': f"These are the news for the topic {topic}. News: \n {contents}"
             },
             {
                 'role': 'user',
