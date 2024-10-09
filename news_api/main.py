@@ -1,3 +1,5 @@
+from typing import List
+from textblob import TextBlob
 import ollama
 from fastapi import FastAPI
 from newsapi import NewsApiClient
@@ -8,10 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 
-@app.get("/get_news/{topic}")
-async def get_news(
+async def get_news_content(
         topic: str
-):
+) -> List[str]:
     with open('.env', 'r') as file:
         # Read the contents of the file
         contents = file.read()
@@ -22,7 +23,23 @@ async def get_news(
                                           sort_by='relevancy',
                                           page_size=3,
                                           page=2)
-    contents = [article["content"] for article in all_articles["articles"]]
+    return [article["content"] for article in all_articles["articles"]]
+
+
+@app.get("/news/sentiment/{topic}")
+async def get_sentiment(
+        topic: str
+):
+    contents = await get_news_content(topic)
+    sentiments = [TextBlob(content).sentiment[1] for content in contents]
+    return sum(sentiments) / len(sentiments)
+
+
+@app.get("/news/{topic}")
+async def get_news(
+        topic: str
+):
+    contents = get_news_content(topic)
     ai_response = ollama.chat(
         model="llama3-gradient:1048k",
         messages=[
