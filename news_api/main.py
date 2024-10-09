@@ -32,7 +32,7 @@ async def get_sentiment(
 ):
     contents = await get_news_content(topic)
     sentiments = [TextBlob(content).sentiment[1] for content in contents]
-    return sum(sentiments) / len(sentiments)
+    return {"message": sum(sentiments) / len(sentiments)}
 
 
 @app.get("/news/{topic}")
