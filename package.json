@@ -23,6 +23,6 @@
   "dependencies": {
     "@seda-protocol/as-sdk": "^0.0.15",
     "@seda-protocol/vm": "^0.0.4",
-    "newsapi": "^2.4.1"
+    "visitor-as": "^0.11.4"
   }
 }

@@ -4,9 +4,8 @@ import {
   Process,
   httpFetch,
 } from "@seda-protocol/as-sdk/assembly";
-
 class NewsFeedResponse {
-  message!: string;
+  message!: number;
 }
 
 export function executionPhase(): void {
@@ -14,7 +13,7 @@ export function executionPhase(): void {
   const coin = Process.getInputs().toUtf8String();
   Console.log(`Fetching sentiments for coin: ${coin}`);
   const response = httpFetch(
-    `https://chain.dogukangun.de/get_news/${coin}`
+    `https://news.dogukangun.de/news/sentiment/${coin}`
   );
 
   if (!response.ok) {
@@ -25,5 +24,5 @@ export function executionPhase(): void {
   }
 
   const data = response.bytes.toJSON<NewsFeedResponse>();
-  Process.success(Bytes.fromNumber(Number(data.message)));
+  Process.success(Bytes.fromNumber(data.message));
 }

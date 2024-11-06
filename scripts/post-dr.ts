@@ -16,9 +16,9 @@ async function main() {
             method: 'none'
         },
         oracleProgramId: process.env.ORACLE_PROGRAM_ID,
-        drInputs: Buffer.from('eth-usdc'),
-        tallyInputs: Buffer.from([]),
-        memo: Buffer.from(new Date().toISOString()),
+        drInputs: new Uint8Array(Buffer.from('bitcoin')),
+        tallyInputs: new Uint8Array(Buffer.from([])),
+        memo: new Uint8Array(Buffer.from(new Date().toISOString())),
     }, {});
 
     console.table(result);
