@@ -1,6 +1,18 @@
 
 # ChainAbstractionHackathon_Oracle
 
+## WEB UI
+
+### HOME PAGE
+<img width="1505" alt="Screenshot 2024-11-09 at 00 24 06" src="https://github.com/user-attachments/assets/96eb3959-d061-4a9f-a461-919860b0ac24">
+
+### SEARCH NEWS
+
+<img width="1444" alt="Screenshot 2024-11-09 at 00 24 30" src="https://github.com/user-attachments/assets/f9b00660-a8d4-4e5c-80ca-e83a761e91e6">
+
+### GET SCORE
+<img width="1356" alt="Screenshot 2024-11-09 at 00 25 41" src="https://github.com/user-attachments/assets/27481baf-1258-4916-a2b8-be54861a6af6">
+
 ## Overview
 
 **ChainAbstractionHackathon_Oracle** is a project designed to bring news sentiment analysis to on-chain trading systems. By leveraging real-time news sentiment, it enables smarter and more responsive trade bot operations, addressing a gap in traditional on-chain bots that lack external data access.
